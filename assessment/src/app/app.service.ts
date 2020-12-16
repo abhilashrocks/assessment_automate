@@ -18,14 +18,14 @@ export class AppService {
   getEmployeewithId(id: number): Observable<any> {
     return this.http.get(environment.EMPLOYEE_URL + AppConstants.EMPLOYEE_API_END_POINTS.GET_EMPLOYEE_BY_ID + id);
   }
-  updateEmployee(employee: any) {
+  updateEmployee(employee: any): Observable<any> {
     return this.http.put(environment.EMPLOYEE_URL + AppConstants.EMPLOYEE_API_END_POINTS.UPDATE_EMPLOYEE, employee);
   }
 
-  deleteEmployee(id: number) {
+  deleteEmployee(id: number): Observable<any> {
     return this.http.delete(environment.EMPLOYEE_URL + AppConstants.EMPLOYEE_API_END_POINTS.DELETE_EMPLOYEE + id);
   }
-  addEmployee(employee: any) {
+  addEmployee(employee: any): Observable<any> {
     return this.http.post(environment.EMPLOYEE_URL + AppConstants.EMPLOYEE_API_END_POINTS.ADD_EMPLOYEE, employee);
   }
 }
