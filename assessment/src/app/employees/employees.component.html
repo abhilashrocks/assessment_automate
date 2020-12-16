@@ -1,0 +1,25 @@
+<div class="container" class="mt-2">
+  <div class="col-md-12">
+    <h2 class="mt-2 mb-3">Employees Data</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Salary</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{employee.id}}</td>
+          <td>{{employee.employee_name}}</td>
+          <td>{{employee.employee_age}}</td>
+          <td>{{employee.employee_salary}}</td>
+          <td>{{employee.employee_salary}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
