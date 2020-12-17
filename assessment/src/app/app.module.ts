@@ -15,6 +15,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { PreventZero } from 'src/only-number.directive';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +27,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     EmployeeComponent,
     EmployeesComponent,
     HomeComponent,
-    LoaderComponent
+    LoaderComponent,
+    PreventZero
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

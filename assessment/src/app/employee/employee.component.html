@@ -1,1 +1,72 @@
-<p>employee works!</p>
+<div class="row">
+  <div class="col-md-11 ml-5 mt-2" style="background-color: lightgrey;">
+    <mat-card>
+      <button class="btn btn-primary mr-4 mb-2" (click)="back()" style="float: right;">Back</button>
+      <mat-card-title>
+        <div class="row">
+          <h2>
+            Employee Details
+          </h2>
+        </div>
+      </mat-card-title>
+      <mat-card-content>
+        <div class="row">
+          <div>
+            <div class="col-md-12">
+              <img [src]="employeeData?.avatar" style="width: 250px;">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row mt-4">
+            </div>
+            <div class="col-md-12">
+              <label for="id" style="text-align: end;">
+                <b>
+                  Id :
+                </b>
+              </label>
+              <span class="col-md-7" id="id">
+                {{employeeData?.id}}
+              </span>
+            </div>
+            <div class="col-md-12">
+              <label for="id" style="text-align: end;">
+                <b>
+                  First Name :
+                </b>
+              </label>
+              <span class="col-md-7" id="id">
+                {{employeeData?.first_name}}
+              </span>
+            </div>
+            <div class="col-md-12">
+              <label for="id" style="text-align: end;">
+                <b>
+                  Last Name :
+                </b>
+              </label>
+              <span class="col-md-7" id="id">
+                {{employeeData?.last_name}}
+              </span>
+            </div>
+            <div class="col-md-12">
+              <label for="id" style="text-align: end;">
+                <b>
+                  Email :
+                </b>
+              </label>
+              <span class="col-md-7" id="id">
+                {{employeeData?.email}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div *ngIf="showLoading">
+  <app-loader></app-loader>
+</div>
+
+

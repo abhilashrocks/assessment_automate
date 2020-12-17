@@ -5,33 +5,36 @@
         <h2 class="mt-2 mb-3">Employees Data</h2>
       </div>
       <div class="mt-2">
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" (click)="addEmployee(content)">
           Add
         </button>
       </div>
     </div>
+    <ngb-toast [autohide]="false" *ngIf="show" class='bg-success text-light'>
+      {{message}}
+    </ngb-toast>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Age</th>
-          <th scope="col">Salary</th>
+          <th scope="col">Id</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let employee of employees">
           <td>{{employee.id}}</td>
-          <td>{{employee.employee_name}}</td>
-          <td>{{employee.employee_age}}</td>
-          <td>{{employee.employee_salary}}</td>
+          <td>{{employee.first_name}}</td>
+          <td>{{employee.last_name}}</td>
+          <td>{{employee.email}}</td>
           <td>
             <button mat-mini-fab color="primary" (click)="deleteEmployee(employee)">
               <mat-icon>delete</mat-icon>
             </button>
             <span class="pl-4">
-              <button mat-mini-fab color="primary" (click)="editEmployee(employee)">
+              <button mat-mini-fab color="primary" (click)="editEmployee(employee,content)">
                 <mat-icon>edit</mat-icon>
               </button>
             </span>
@@ -49,3 +52,44 @@
 <div *ngIf="showLoading">
   <app-loader></app-loader>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{isAdd}} Employee</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="employeeForm">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" formControlName="first_name" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" />
+        <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
+          <div *ngIf="f.first_name.errors.required">First Name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" formControlName="last_name" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }" />
+        <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
+          <div *ngIf="f.last_name.errors.required">Last Name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" formControlName="email" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSave()">Save</button>
+  </div>
+</ng-template>

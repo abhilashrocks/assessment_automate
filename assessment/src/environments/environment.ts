@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  EMPLOYEE_URL: 'http://dummy.restapiexample.com/api/v1'
+  EMPLOYEE_URL: 'https://reqres.in/api/'
 };
 
 /*
