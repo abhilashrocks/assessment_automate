@@ -20,13 +20,21 @@ export class EmployeesComponent implements OnInit {
   age = 0;
   name = '';
   salary = 0;
-  employeeForm: FormGroup | undefined;
+  employeeForm: FormGroup ;
+
   constructor(public appService: AppService, private snackBar: MatSnackBar,
-    private router: Router, private modalService: NgbModal, private formBuilder: FormBuilder) { }
+    private router: Router, private modalService: NgbModal, private formBuilder: FormBuilder) {
+      this.employeeForm = this.formBuilder.group({
+        id: [],
+        first_name: ['', Validators.required],
+        last_name: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+      });
+    }
 
   ngOnInit(): void {
     this.getAllEmployees();
-    this.buildForm();
+
   }
 
   buildForm(): void {
